@@ -8,11 +8,7 @@ fi
 #conda homebrew
 export PATH="/usr/local/anaconda3/bin:$PATH"
 
-#jenv
-export PATH="$HOME/.jenv/bin:$PATH"
-eval "$(jenv init -)"
-
-#brew java
+#java homebrew
 export PATH="/usr/local/opt/openjdk/bin:$PATH"
 export CPPFLAGS="-I/usr/local/opt/openjdk/include"
 
