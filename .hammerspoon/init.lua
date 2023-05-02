@@ -30,8 +30,8 @@ local resizeFull = function()
   local screen = win:screen()
   local max = screen:frame()
 
-  f.x = 0
-  f.y = 0
+  f.x = max.x
+  f.y = max.y
   f.w = max.w
   f.h = max.h
   win:setFrame(f, 0)
@@ -43,8 +43,8 @@ local resizeLeft = function()
   local screen = win:screen()
   local max = screen:frame()
 
-  f.x = 0
-  f.y = 0
+  f.x = max.x
+  f.y = max.y
   f.w = max.w / 2
   f.h = max.h
   win:setFrame(f, 0)
@@ -69,8 +69,8 @@ local resizeTop = function()
   local screen = win:screen()
   local max = screen:frame()
 
-  f.x = 0
-  f.y = 0
+  f.x = max.x
+  f.y = max.y
   f.w = max.w
   f.h = max.h / 2
   win:setFrame(f, 0)
@@ -81,8 +81,8 @@ local resizeBottom = function()
   local f = win:frame()
   local screen = win:screen()
   local max = screen:frame()
-  f.x = 0
-  f.y = max.h / 2
+  f.x = max.x
+  f.y = max.y + (max.h/2)
   f.w = max.w
   f.h = max.h / 2
   win:setFrame(f, 0)
