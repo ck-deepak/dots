@@ -1,4 +1,4 @@
--- GRID
+-- Grid
 hs.window.animationDuration=0.1
 local hotkey = require "hs.hotkey"
 local grid = require "hs.grid"
@@ -95,3 +95,8 @@ hs.hotkey.bind(mash, "j", resizeBottom)
 hs.hotkey.bind(mash, "k", resizeTop)
 hs.hotkey.bind(mash, "l",  resizeRight)
 hs.hotkey.bind(mash, ";", resizeFull)
+
+hs.hotkey.bind({"cmd", "alt", "ctrl"}, "R", function()
+  hs.reload()
+end)
+hs.alert.show("Config reloaded")
