@@ -12,6 +12,7 @@ export LSCOLORS=ExFxBxDxCxegedabagacad
 
 precmd() {
         update_git_info
+	update_nix_shell_info
 }
 
 
@@ -42,13 +43,19 @@ function update_git_info() {
 	fi	
 }
 
+function update_nix_shell_info() {
+	nix_prompt=""
+	if [ $IN_NIX_SHELL = "impure" ] || [ $IN_NIX_SHELL = "pure" ]; then
+		nix_prompt=" %F{green}nix%f"
+	fi
+}
+
 # enable environment variable sub in prompt option
 setopt PROMPT_SUBST
 
 # %n: name %m: machine %2d: 2 levels of dir
 # PROMPT='%n@%m %F{yellow}(%2d)%f %# '
-PROMPT='(%2d)${git_prompt} %# '
+PROMPT='(%2d)${nix_prompt}${git_prompt} %# '
 
 # right prompt with completion status and 24h time, hh:mm:ss
 RPROMPT='%(?.%F{green}.%F{red}-)%f %F{250}%*%f'
-
