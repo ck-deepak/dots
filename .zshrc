@@ -45,7 +45,7 @@ function update_git_info() {
 
 function update_nix_shell_info() {
 	nix_prompt=""
-	if [ $IN_NIX_SHELL = "impure" ] || [ $IN_NIX_SHELL = "pure" ]; then
+	if [[ $IN_NIX_SHELL = "impure" ]] || [[ $IN_NIX_SHELL = "pure" ]]; then
 		nix_prompt=" %F{green}nix%f"
 	fi
 }
