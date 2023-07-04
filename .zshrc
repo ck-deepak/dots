@@ -1,7 +1,5 @@
 # dots git bare repo
-
 alias config='/usr/bin/git --git-dir=$HOME/dots/ --work-tree=$HOME'
-# have to use " to avoid unmatching with '
 alias gitlog='git log --oneline -n 10 --graph --decorate --abbrev-commit'
 alias gitlist='git diff-tree --no-commit-id --name-only -r'
 alias hideFiles='defaults write com.apple.finder AppleShowAllFiles'
