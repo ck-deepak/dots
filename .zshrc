@@ -24,7 +24,8 @@ function git_unstaged_count() {
 }
 
 # Here git status porcelain works as untracked have '??'
-# but not for staged/unstaged where both have 'M'
+# but not for existing files staged/unstaged where 
+# both have 'M'
 function git_untracked_count() {
 	echo $(git status --porcelain | grep -c '^??')
 }
@@ -47,7 +48,7 @@ function update_git_info() {
         	fi
 
 		if [ $untracked_changes -gt 0 ]; then
-			git_prompt+=" %F{red}?$untracked_changes%f"
+			git_prompt+=" %F{red}!$untracked_changes%f"
 		fi 
 	fi	
 }
