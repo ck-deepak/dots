@@ -23,11 +23,18 @@ function git_unstaged_count() {
         echo $(git diff --name-only | wc -l | tr -d '[:space:]')
 }
 
+# Here git status porcelain works as untracked have '??'
+# but not for staged/unstaged where both have 'M'
+function git_untracked_count() {
+	echo $(git status --porcelain | grep -c '^??')
+}
+
 function update_git_info() {
 	git_prompt=""
 	if $(git rev-parse --is-inside-work-tree >/dev/null 2>&1); then
 		local staged_changes=$(git_staged_count)
 		local unstaged_changes=$(git_unstaged_count)
+		local untracked_changes=$(git_untracked_count)
 		local branch=$(git symbolic-ref --short HEAD)
 		git_prompt=" %F{blue}↑ $branch%f"
   
@@ -38,6 +45,10 @@ function update_git_info() {
         	if [ $staged_changes -gt 0 ]; then
                 	git_prompt+=" %F{green}+$staged_changes%f"
         	fi
+
+		if [ $untracked_changes -gt 0 ]; then
+			git_prompt+=" %F{red}?$untracked_changes%f"
+		fi 
 	fi	
 }
 
