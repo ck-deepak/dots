@@ -3,6 +3,7 @@ alias config='/usr/bin/git --git-dir=$HOME/dots/ --work-tree=$HOME'
 alias gitlog='git log --oneline -n 10 --graph --decorate --abbrev-commit'
 alias gitlist='git diff-tree --no-commit-id --name-only -r'
 alias hideFiles='defaults write com.apple.finder AppleShowAllFiles'
+alias upgradeNix="sudo -i sh -c 'nix-channel --update && nix-env --install --attr nixpkgs.nix && launchctl remove org.nixos.nix-daemon && launchctl load /Library/LaunchDaemons/org.nixos.nix-daemon.plist'"
 
 # Mac terminal color
 export CLICOLOR=1
